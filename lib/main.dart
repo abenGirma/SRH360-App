@@ -1,24 +1,37 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-//import 'presentation/pages/home_page.dart';
-//import 'package:get/get.dart';
-void main() {
-  runApp(const MyApp());
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:srh360app/presentation/pages/sign_in_page.dart';
+
+import 'config/theme.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(EasyLocalization(
+    supportedLocales: const [
+      Locale('en', 'US'),
+      Locale('am'),
+    ],
+    path: 'assets/translations',
+    fallbackLocale: const Locale('en', 'US'),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(       
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
+    return ResponsiveApp(
+      builder: (_) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'SRH360',
+        theme: lightThemeData(),
+        home: const SignInPage(),
       ),
-      home: const HomePage(),
     );
   }
 }
