@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:srh360app/presentation/pages/sign_in_page.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveApp(
-      builder: (_) => MaterialApp(
+      builder: (_) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'SRH360',
         theme: lightThemeData(),
