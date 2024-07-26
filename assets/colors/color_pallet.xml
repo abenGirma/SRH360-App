@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor" type="material">#FF79BC</color>#
+    <color name="primaryColor" type="material">#FF79BC</color>
     <color name="secondaryColor" type="material">#FFC3C8</color>
 
 </resources>
