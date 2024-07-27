@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import 'package:srh360app/gen/assets.gen.dart';
 import 'package:srh360app/gen/colors.gen.dart';
+import 'package:srh360app/presentation/pages/course_page.dart';
 import 'package:srh360app/presentation/widgets/common_button.dart';
 import 'package:srh360app/presentation/widgets/common_textfield.dart';
 
@@ -120,9 +122,10 @@ class _SignInPageState extends State<SignInPage> {
         const SizedBox(height: 30),
         CommonButton(
           onPressed: () {
-            if (_formKey.currentState!.validate()) {
-              //
-            }
+            // if (_formKey.currentState!.validate()) {
+            
+            // }
+              Get.to(CoursesScreen());
           },
           child: Text(
             'SIGN IN',
