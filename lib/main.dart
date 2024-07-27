@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:srh360app/presentation/pages/sign_in_page.dart';
+import 'package:srh360app/presentation/pages/sign_up_page.dart';
+import 'package:srh360app/presentation/pages/welcome_page.dart';
 
 import 'config/theme.dart';
 
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'SRH360',
         theme: lightThemeData(),
-        home: const SignInPage(),
+        home: const WelcomePage(),
       ),
     );
   }

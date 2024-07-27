@@ -12,12 +12,26 @@ class CommonButton extends StatelessWidget {
     return SizedBox(
       width: 45.sw,
       height: 47,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: ColorName.primaryColor,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              ColorName.primaryColor.withOpacity(0.5),
+              ColorName.primaryColor,
+            ],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+          borderRadius: BorderRadius.circular(25),
         ),
-        onPressed: onPressed,
-        child: child,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+          ),
+          onPressed: onPressed,
+          child: child,
+        ),
       ),
     );
   }
