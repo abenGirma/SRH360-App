@@ -12,12 +12,59 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/HIV_logo.png
+  AssetGenImage get hIVLogo =>
+      const AssetGenImage('assets/images/HIV_logo.png');
+
+  /// File path: assets/images/adolescence.png
+  AssetGenImage get adolescence =>
+      const AssetGenImage('assets/images/adolescence.png');
+
+  /// File path: assets/images/back.png
+  AssetGenImage get back => const AssetGenImage('assets/images/back.png');
+
+  /// File path: assets/images/checkmark.svg
+  String get checkmark => 'assets/images/checkmark.svg';
+
+  /// File path: assets/images/family.jpg
+  AssetGenImage get family => const AssetGenImage('assets/images/family.jpg');
+
+  /// File path: assets/images/family_planning.jpeg
+  AssetGenImage get familyPlanningJpeg =>
+      const AssetGenImage('assets/images/family_planning.jpeg');
+
+  /// File path: assets/images/family_planning.png
+  AssetGenImage get familyPlanningPng =>
+      const AssetGenImage('assets/images/family_planning.png');
+
+  /// File path: assets/images/family_planning_new.svg
+  String get familyPlanningNew => 'assets/images/family_planning_new.svg';
+
+  /// File path: assets/images/happy_face.png
+  AssetGenImage get happyFace =>
+      const AssetGenImage('assets/images/happy_face.png');
+
   /// File path: assets/images/place_holder.png
   AssetGenImage get placeHolder =>
       const AssetGenImage('assets/images/place_holder.png');
 
+  /// File path: assets/images/user.png
+  AssetGenImage get user => const AssetGenImage('assets/images/user.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [placeHolder];
+  List<dynamic> get values => [
+        hIVLogo,
+        adolescence,
+        back,
+        checkmark,
+        family,
+        familyPlanningJpeg,
+        familyPlanningPng,
+        familyPlanningNew,
+        happyFace,
+        placeHolder,
+        user
+      ];
 }
 
 class $AssetsTranslationsGen {

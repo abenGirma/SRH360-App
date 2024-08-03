@@ -71,8 +71,6 @@ flutter:
   assets:
     - assets/images/
     - assets/translations/
-    - assets/animations/
-    - assets/image/
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
