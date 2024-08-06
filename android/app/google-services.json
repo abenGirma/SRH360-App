@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "417368336731",
+    "project_id": "srh360-app",
+    "storage_bucket": "srh360-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417368336731:android:c5a2c321369fdf0589d27e",
+        "android_client_info": {
+          "package_name": "com.example.srh360app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGJ3dZv1f5VdoOALPS2WN7Qm6P--7d8ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

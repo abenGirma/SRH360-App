@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:srh360app/gen/colors.gen.dart';
 import 'package:srh360app/presentation/tabs/category_tab.dart';
@@ -17,6 +18,10 @@ class _HomePageState extends State<HomePage>
   late TabController tabController;
   int tabIndex = 0;
 
+  void logout(){
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   void initState() {
     tabController = TabController(length: 4, vsync: this);
@@ -26,7 +31,11 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          actions: [
+            IconButton(onPressed: logout, icon: Icon(Icons.logout))
+          ],
+        ),
         body: Expanded(
           child: TabBarView(
             controller: tabController,
