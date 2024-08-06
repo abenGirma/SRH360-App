@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:srh360app/presentation/pages/lesson_page.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class CourseDetailScreen extends StatelessWidget {
@@ -119,6 +120,7 @@ class CourseDetailScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
+                Get.to(LessonPage());
                 // setState(() {
                 //   selectedIndex = index;
                 // });

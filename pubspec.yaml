@@ -37,10 +37,12 @@ dependencies:
   cupertino_icons: ^1.0.6
   easy_localization: ^3.0.7
   responsive_builder: ^0.7.1
-  step_progress_indicator: ^1.0.2
   flutter_svg: ^2.0.10+1
   firebase_core: ^2.24.2
   firebase_auth: ^4.16.0
+  flutter_svg: ^2.0.10+1
+  step_progress_indicator: ^1.0.2
+  
 
 dev_dependencies:
   flutter_test:
