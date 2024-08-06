@@ -30,8 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ));
     //validate the inputs
     if (_formKey.currentState!.validate()) {
-      print("form valid");
-      debugPrint("inside");
+      
       //try to create a user
       try {
         debugPrint("firebase");
@@ -40,14 +39,14 @@ class _SignUpPageState extends State<SignUpPage> {
                 email: emailController.text.trim(), password: passwordController.text.trim());
 
         // pop loading circle
-        debugPrint("Finished creating Account");
+        
         Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
         Navigator.pop(context);
         errorMessage(e.code, context);
       }
     } else {
-      print("form invalid");
+      
       Navigator.pop(context);
     }
   }
