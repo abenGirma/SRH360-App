@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import 'package:srh360app/gen/colors.gen.dart';
 import 'package:srh360app/presentation/pages/sign_in_page.dart';
 import 'package:srh360app/presentation/widgets/common_button.dart';
 import 'package:srh360app/presentation/widgets/common_textfield.dart';
+import 'package:srh360app/presentation/widgets/error_message.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -18,6 +20,37 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  void registerUser() async {
+    print("object");
+    showDialog(
+        context: context,
+        builder: (context) => const Center(
+              child: CircularProgressIndicator(),
+            ));
+    //validate the inputs
+    if (_formKey.currentState!.validate()) {
+      print("form valid");
+      debugPrint("inside");
+      //try to create a user
+      try {
+        debugPrint("firebase");
+        UserCredential? userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailController.text.trim(), password: passwordController.text.trim());
+
+        // pop loading circle
+        debugPrint("Finished creating Account");
+        Navigator.pop(context);
+      } on FirebaseAuthException catch (e) {
+        Navigator.pop(context);
+        errorMessage(e.code, context);
+      }
+    } else {
+      print("form invalid");
+      Navigator.pop(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,15 +100,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "Already have an account?",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                  color: Colors.black87,
-                                ),
-                          ),
+                          Text("Already have an account?",
+                              style: Theme.of(context).textTheme.titleMedium),
                           TextButton(
                               onPressed: () {
                                 Navigator.push(
@@ -91,7 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     .textTheme
                                     .titleMedium!
                                     .copyWith(
-                                      color: Colors.black87,
+                                      fontWeight: FontWeight.bold,
                                     ),
                               )),
                         ],
@@ -120,7 +146,7 @@ class _SignUpPageState extends State<SignUpPage> {
             if (text!.isEmpty) {
               return 'Full Name is Empty';
             }
-            return '';
+            return null;
           },
           controller: nameController,
           hintText: 'Full Name',
@@ -134,7 +160,7 @@ class _SignUpPageState extends State<SignUpPage> {
             } else if (text.length != 10) {
               return 'Phone Number must be 10 digits';
             }
-            return '';
+            return null;
           },
           controller: phoneController,
           hintText: 'Phone Number',
@@ -146,7 +172,7 @@ class _SignUpPageState extends State<SignUpPage> {
             } else if (text.isEmail == false) {
               return 'Email is not valid';
             }
-            return '';
+            return null;
           },
           controller: emailController,
           hintText: 'Email Address',
@@ -155,8 +181,10 @@ class _SignUpPageState extends State<SignUpPage> {
           validator: (text) {
             if (text!.isEmpty) {
               return 'Password is Empty';
+            } else if (text.length < 6){
+              return 'Password should be atleast 6 characters';
             }
-            return '';
+            return null;
           },
           isObscure: true,
           controller: passwordController,
@@ -164,11 +192,9 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
         const SizedBox(height: 40),
         CommonButton(
-          onPressed: () {
-            if (_formKey.currentState!.validate()) {
-              //
-            }
-          },
+          onPressed: 
+            registerUser
+          ,
           child: Text(
             'SIGN UP',
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
