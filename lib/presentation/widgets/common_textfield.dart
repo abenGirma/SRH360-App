@@ -4,7 +4,8 @@ class CommonTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final bool isObscure;
-  final String Function(String? text)? validator;
+  final String? Function(String? text)? validator;
+
   const CommonTextField({
     super.key,
     required this.controller,
@@ -18,9 +19,17 @@ class CommonTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: TextFormField(
-        validator: validator,
+        validator: (text) => validator?.call(text?.trim()),
         obscureText: isObscure,
         controller: controller,
+        onChanged: (text) {
+          controller.value = controller.value.copyWith(
+            text: text.trim(),
+            selection: TextSelection.fromPosition(
+              TextPosition(offset: text.trim().length),
+            ),
+          );
+        },
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,

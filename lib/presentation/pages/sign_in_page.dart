@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/string_extensions.dart';
@@ -6,6 +7,7 @@ import 'package:srh360app/gen/colors.gen.dart';
 import 'package:srh360app/presentation/pages/course_page.dart';
 import 'package:srh360app/presentation/widgets/common_button.dart';
 import 'package:srh360app/presentation/widgets/common_textfield.dart';
+import 'package:srh360app/presentation/widgets/error_message.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -18,6 +20,32 @@ class _SignInPageState extends State<SignInPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  void login() async {
+    showDialog(
+        context: context,
+        builder: (context) => const Center(
+              child: CircularProgressIndicator(),
+            ));
+    if (_formKey.currentState!.validate()) {
+      //try to login
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: emailController.text.trim(), password: passwordController.text.trim());
+
+        // pop loading circle
+        if (context.mounted) {
+          Navigator.pop(context);
+        }
+      } on FirebaseAuthException catch (e) {
+        Navigator.pop(context);
+        errorMessage(e.code, context);
+      }
+    } else {
+      print("form invalid");
+      Navigator.pop(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +131,7 @@ class _SignInPageState extends State<SignInPage> {
             } else if (text.isEmail == false) {
               return 'Email is not valid';
             }
-            return '';
+            return null;
           },
           controller: emailController,
           hintText: 'Email Address',
@@ -113,7 +141,7 @@ class _SignInPageState extends State<SignInPage> {
             if (text!.isEmpty) {
               return 'Password is Empty';
             }
-            return '';
+            return null;
           },
           isObscure: true,
           controller: passwordController,
@@ -121,12 +149,7 @@ class _SignInPageState extends State<SignInPage> {
         ),
         const SizedBox(height: 30),
         CommonButton(
-          onPressed: () {
-            // if (_formKey.currentState!.validate()) {
-            
-            // }
-              Get.to(CoursesScreen());
-          },
+          onPressed: login,
           child: Text(
             'SIGN IN',
             style: Theme.of(context).textTheme.titleMedium,
