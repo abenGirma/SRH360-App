@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:srh360app/gen/assets.gen.dart';
+import 'package:srh360app/model/user_model.dart';
+import 'package:srh360app/services/auth_service.dart';
 
 import '../widgets/course_card.dart';
 
@@ -13,6 +16,23 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   final searchController = TextEditingController();
+  final AuthService _authService = AuthService();
+  UserModel? user;
+ @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final fetchedUser = await _authService.getCurrentUserInfo();
+    setState(() {
+      user = fetchedUser;
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +44,7 @@ class _HomeTabState extends State<HomeTab> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Hi, User Name',
+                'Hi, ${user?.name ?? 'User'}',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               ClipRRect(

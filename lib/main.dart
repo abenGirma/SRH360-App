@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:srh360app/presentation/auth/auth.dart';
-import 'package:srh360app/presentation/pages/home_page.dart';
-import 'package:srh360app/presentation/pages/sign_up_page.dart';
 
 import 'config/theme.dart';
 

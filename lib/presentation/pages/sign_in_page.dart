@@ -5,9 +5,11 @@ import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import 'package:srh360app/gen/assets.gen.dart';
 import 'package:srh360app/gen/colors.gen.dart';
 import 'package:srh360app/presentation/pages/course_page.dart';
+import 'package:srh360app/presentation/pages/sign_up_page.dart';
 import 'package:srh360app/presentation/widgets/common_button.dart';
 import 'package:srh360app/presentation/widgets/common_textfield.dart';
 import 'package:srh360app/presentation/widgets/error_message.dart';
+import 'package:srh360app/services/auth_service.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -21,6 +23,10 @@ class _SignInPageState extends State<SignInPage> {
   TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  final AuthService _authService = AuthService();
+
+  
+
   void login() async {
     showDialog(
         context: context,
@@ -30,8 +36,10 @@ class _SignInPageState extends State<SignInPage> {
     if (_formKey.currentState!.validate()) {
       //try to login
       try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: emailController.text.trim(), password: passwordController.text.trim());
+        await _authService.signInWithEmail(
+          emailController.text.trim(),
+          passwordController.text.trim(),
+        );
 
         // pop loading circle
         if (context.mounted) {
@@ -91,17 +99,47 @@ class _SignInPageState extends State<SignInPage> {
                     const SizedBox(height: 150),
                     Align(
                       alignment: Alignment.center,
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Forget Your Passoword?',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                  color: Colors.black87,
-                                ),
-                          )),
+                      child: Column(
+                        children: [
+                          TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Forget Your Password?',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: Colors.black87,
+                                    ),
+                              )),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                
+                                children: [
+                                  Text("Don't have an account?",
+                              style: Theme.of(context).textTheme.titleMedium),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignUpPage(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'Sign Up',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              )),
+                                ],
+                              )
+                        ],
+                      ),
                     )
                   ],
                 ),
