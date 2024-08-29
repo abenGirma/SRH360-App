@@ -2,14 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:srh360app/model/article.dart';
 
-import '../model/article.dart';
 import '../widgets/article_card.dart';
-import '../widgets/article_controller.dart';
+import '../../controller/article_controller.dart';
 import '../widgets/article_text.dart';
 import '../widgets/category_text.dart';
 import 'article_detail_page.dart';
-
 
 class ArticlesPage extends StatelessWidget {
   final ArticlesController controller = Get.put(ArticlesController());
@@ -148,18 +147,24 @@ class ArticlesPage extends StatelessWidget {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.apps,
-                    size: 30,),
+                  icon: Icon(
+                    Icons.apps,
+                    size: 30,
+                  ),
                   label: 'Apps',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person,
-                    size: 30,),
+                  icon: Icon(
+                    Icons.person,
+                    size: 30,
+                  ),
                   label: 'Profile',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.menu,
-                    size: 30,),
+                  icon: Icon(
+                    Icons.menu,
+                    size: 30,
+                  ),
                   label: 'Menu',
                 ),
               ],

@@ -1,13 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:srh360app/gen/colors.gen.dart';
-import 'package:srh360app/presentation/tabs/category_tab.dart';
+import 'package:srh360app/model/course.dart';
+import 'package:srh360app/model/lesson.dart';
+import 'package:srh360app/presentation/pages/course_page.dart';
 import 'package:srh360app/presentation/tabs/home_tab.dart';
 import 'package:srh360app/presentation/tabs/menu_tab.dart';
 import 'package:srh360app/presentation/tabs/profile_tab.dart';
 
+import '../../controller/course_controller.dart';
+
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -18,7 +23,7 @@ class _HomePageState extends State<HomePage>
   late TabController tabController;
   int tabIndex = 0;
 
-  void logout(){
+  void logout() {
     FirebaseAuth.instance.signOut();
   }
 
@@ -30,11 +35,48 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+//     final courseController = Get.put(CourseController());
+
+// // // Create a new course object
+//     Course newCourse = Course(
+//       id: '', // Leave blank, Firestore will generate this
+//       categoryID: '1rK2hFTqtyCjwsClKnCF',
+//       name: 'Introduction to Reproductive Health',
+//       description:
+//           'A foundational course on reproductive health covering essential topics.',
+//       progress: 0,
+//       lessons: [], // Will be populated with lessons later
+//       imageUrl: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0',
+//     );
+
+// // Add the course to Firestore
+//     courseController.addCourse(newCourse).then((_) {
+//       // Add lessons after the course is successfully added
+//       Lesson lesson1 = Lesson(
+//           name: 'Reproductive health',
+//           isCompleted: false,
+//           headerImage:
+//               'https://images.unsplash.com/photo-1499084732479-de2c02d45fc4',
+//           title: 'Introduction',
+//           body:
+//               'Lorem ipsum dolor sit amet, consecteur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas integer eget aliquet nibh praesent. Vivamus at augue eget arcu dictum varius duis at. Donec adipiscing tristique risus nec feugiat in fermentum posuere urna');
+
+//       Lesson lesson2 = Lesson(
+//           name: 'Family Planning',
+//           isCompleted: false,
+//           headerImage:
+//               'https://images.unsplash.com/photo-1499084732479-de2c02d45fc4',
+//           title: 'Reproductive Health',
+//           body:
+//               'Lorem ipsum dolor sit amet, consecteur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas integer eget aliquet nibh praesent. Vivamus at augue eget arcu dictum varius duis at. Donec adipiscing tristique risus nec feugiat in fermentum posuere urna');
+
+//       courseController.addLesson(newCourse.id, lesson1);
+//       courseController.addLesson(newCourse.id, lesson2);
+//     });
+
     return Scaffold(
         appBar: AppBar(
-          actions: [
-            IconButton(onPressed: logout, icon: Icon(Icons.logout))
-          ],
+          actions: [IconButton(onPressed: logout, icon: Icon(Icons.logout))],
         ),
         body: Expanded(
           child: TabBarView(
@@ -42,7 +84,7 @@ class _HomePageState extends State<HomePage>
             physics: const NeverScrollableScrollPhysics(),
             children: const [
               HomeTab(),
-              CategoryTab(),
+              CoursesScreen(),
               ProfileTab(),
               MenuTab(),
             ],

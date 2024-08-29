@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import '../model/article.dart';
+import 'package:srh360app/model/article.dart';
 
 class ArticlesController extends GetxController {
   var selectedCategory = 'Featured'.obs;

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:srh360app/gen/assets.gen.dart';
-import 'package:srh360app/presentation/model/article.dart';
-import 'package:srh360app/presentation/widgets/article_card.dart';
-import 'package:srh360app/presentation/widgets/common_textfield.dart';
 
 import '../widgets/course_card.dart';
 
