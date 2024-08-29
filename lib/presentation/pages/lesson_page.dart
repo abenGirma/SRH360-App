@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:srh360app/model/lesson.dart';
 
 class LessonPage extends StatelessWidget {
-  const LessonPage({Key? key}) : super(key: key);
+  final Lesson lesson;
+  const LessonPage({Key? key, required this.lesson}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: true,
-          title: Text('Introduction'),
+          title: Text(lesson.name),
         ),
         body: SingleChildScrollView(
           child: Column(children: [
@@ -19,32 +21,37 @@ class LessonPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                  top: 15.0, bottom: 15, left: 40, right: 40),
+                  top: 15.0, bottom: 15, left: 20, right: 20),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'assets/images/8555891.jpg',
-                    height: 300,
-                  ),
+                  lesson.headerImage.isNotEmpty
+                      ? SizedBox(
+                          height: 300,
+                          child: Image.network(
+                            lesson.headerImage,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Center(
+                                child: Icon(Icons.broken_image,
+                                    size: 50, color: Colors.grey),
+                              );
+                            },
+                          ),
+                        )
+                      : Icon(Icons.broken_image, size: 50, color: Colors.grey),
                   SizedBox(
                     height: 15,
                   ),
                   Text(
-                    'What is family planning?',
+                    lesson.title,
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    'Lorem ipsum dolor sit amet, consecteur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas integer eget aliquet nibh praesent. Vivamus at augue eget arcu dictum varius duis at. Donec adipiscing tristique risus nec feugiat in fermentum posuere urna.',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Text(
-                    'Lorem ipsum dolor sit amet, consecteur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas integer eget aliquet nibh praesent. Vivamus at augue eget arcu dictum varius duis at. Donec adipiscing tristique risus nec feugiat in fermentum posuere urna.',
+                    lesson.body,
                     style: TextStyle(fontSize: 18),
                   )
                 ],

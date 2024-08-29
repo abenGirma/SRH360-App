@@ -1,7 +1,6 @@
 // views/article_card.dart
 import 'package:flutter/material.dart';
-
-import '../model/article.dart';
+import 'package:srh360app/model/article.dart';
 
 class ArticleCard extends StatelessWidget {
   final Article article;
