@@ -156,9 +156,7 @@ class ArticlesPage extends StatelessWidget {
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
+          unselectedItemColor: const Color.fromARGB(255, 109, 109, 109),
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(
@@ -191,7 +189,7 @@ class ArticlesPage extends StatelessWidget {
           ],
           currentIndex: 0,
           onTap: (index) {
-            // Implement the navigation logic here
+          
           },
         ),
       ),
