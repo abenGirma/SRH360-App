@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:srh360app/gen/assets.gen.dart';
-import 'package:srh360app/presentation/model/article.dart';
-import 'package:srh360app/presentation/widgets/article_card.dart';
-import 'package:srh360app/presentation/widgets/common_textfield.dart';
+import 'package:srh360app/model/article.dart';
+import 'package:srh360app/presentation/pages/article_page.dart';
 
+import '../pages/article_detail_page.dart';
 import '../widgets/course_card.dart';
 
 class HomeTab extends StatefulWidget {
@@ -122,7 +123,9 @@ class _HomeTabState extends State<HomeTab> {
   _buildArticleTile() {
     return GestureDetector(
       onTap: () {
-        //
+        Get.to(() => ArticlesPage(
+              profilePic: profilePic,
+            ));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),

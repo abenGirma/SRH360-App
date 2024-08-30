@@ -3,7 +3,7 @@ class Article {
   final String title;
   final String description;
   final String imageUrl;
-  final Minute minute;
+  final int minute;
   final String content;
   final String name;
   final String bio;
@@ -21,13 +21,6 @@ class Article {
     required this.articleName,
   });
 }
-
-class Minute {
-  final int readingTime;
-
-  Minute({required this.readingTime});
-}
-
 
 class Profile {
   final String imagegUrl;

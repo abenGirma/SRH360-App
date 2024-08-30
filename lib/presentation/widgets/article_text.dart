@@ -1,7 +1,6 @@
 // views/article_text.dart
 import 'package:flutter/material.dart';
-
-import '../model/article.dart';
+import 'package:srh360app/model/article.dart';
 
 class ArticleText extends StatelessWidget {
   final Article article;

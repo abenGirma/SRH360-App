@@ -1,8 +1,7 @@
-// views/article_detail.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../model/article.dart';
+import '../../model/article.dart';
 
 class ArticleDetail extends StatelessWidget {
   final Article article;
@@ -48,7 +47,7 @@ class ArticleDetail extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    '${article.name} | ${article.minute.readingTime} min. read',
+                    '${article.name} | ${article.minute} min. read',
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[700],

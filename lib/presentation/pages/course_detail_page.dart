@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:srh360app/model/course.dart';
+import 'package:srh360app/presentation/pages/lesson_page.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class CourseDetailScreen extends StatelessWidget {
-  const CourseDetailScreen({Key? key}) : super(key: key);
+  final Course course;
+  const CourseDetailScreen({Key? key, required this.course}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<String> listOfLessons = [
-      'Lesson 1',
-      'Lesson 2',
-      'Lesson 3',
-      'Lesson 4',
-      'Lesson 5'
-    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[200],
@@ -38,19 +34,18 @@ class CourseDetailScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Family Planning',
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.w500),
-                            ),
-                          ],
+                        SizedBox(
+                          width: 200,
+                          child: Text(
+                            course.name,
+                            style: TextStyle(
+                                fontSize: 19, fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Row(
                           children: [
                             Text(
-                              '10 lessons',
+                              '${course.lessons.length} lessons',
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w500),
                             ),
@@ -62,18 +57,19 @@ class CourseDetailScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              '10% Done',
+                              '${course.progress} Done',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
                               width: 6,
                             ),
                             Container(
-                              // padding: EdgeInsets.only(left: 3),
                               color: Colors.grey,
                               child: StepProgressIndicator(
-                                totalSteps: 2,
-                                currentStep: 1,
+                                totalSteps: 1,
+                                currentStep: course.progress > 0
+                                    ? course.progress ~/ 10
+                                    : 0,
                                 size: 12,
                                 selectedColor: Colors.grey,
                                 unselectedColor: Colors.grey[300]!,
@@ -85,10 +81,14 @@ class CourseDetailScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                      height: 130,
-                      width: 120,
-                      child: Image.asset('assets/image/family_planning.jpeg')),
+                  Expanded(
+                      child: Padding(
+                    padding: EdgeInsets.only(right: 8.0),
+                    child: SizedBox(
+                        width: 180,
+                        height: 180,
+                        child: Image.network(course.imageUrl)),
+                  )),
                 ],
               ),
               Padding(
@@ -98,7 +98,7 @@ class CourseDetailScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'Lorem ipsum dolor sit amet, amet tempor incididunt',
+                        course.description,
                         style: TextStyle(fontSize: 15),
                       ),
                     ),
@@ -112,17 +112,16 @@ class CourseDetailScreen extends StatelessWidget {
           height: 10,
         ),
         ListView.builder(
-          itemCount: listOfLessons.length,
+          itemCount: course.lessons.length,
           scrollDirection: Axis.vertical,
           physics: BouncingScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                // setState(() {
-                //   selectedIndex = index;
-                // });
-                //  Get.to(CourseDetailScreen());
+                Get.to(LessonPage(
+                  lesson: course.lessons[index],
+                ));
               },
               child: Container(
                 //  width: listOfLessons[index].length <= 3 ? 100 : null,
@@ -147,9 +146,7 @@ class CourseDetailScreen extends StatelessWidget {
                           width: 20,
                         ),
                         Text(
-                          index == 0
-                              ? 'Introduction'
-                              : listOfLessons[index - 1],
+                          course.lessons[index].name,
                           style: TextStyle(fontSize: 20),
                         ),
 
@@ -159,7 +156,7 @@ class CourseDetailScreen extends StatelessWidget {
                       ]),
                     ),
                     SizedBox(
-                        child: index != listOfLessons.length - 1
+                        child: index != course.lessons.length - 1
                             ? Divider()
                             : SizedBox())
                   ],
