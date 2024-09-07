@@ -12,6 +12,8 @@ import 'package:srh360app/services/auth_service.dart';
 
 import '../../controller/course_controller.dart';
 
+import '../../controller/course_controller.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({key});
 

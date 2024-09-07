@@ -5,7 +5,6 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:srh360app/presentation/auth/auth.dart';
 
 import 'config/theme.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 

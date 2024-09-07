@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:srh360app/gen/assets.gen.dart';
 import 'package:srh360app/model/user_model.dart';
@@ -139,7 +140,7 @@ class _HomeTabState extends State<HomeTab> {
   _buildArticleTile() {
     return GestureDetector(
       onTap: () {
-        //
+    //  
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
