@@ -22,6 +22,7 @@ class Article {
   });
 }
 
+
 class Profile {
   final String imagegUrl;
 

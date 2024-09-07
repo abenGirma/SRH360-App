@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../model/article.dart';
 
 class ArticleDetail extends StatelessWidget {
