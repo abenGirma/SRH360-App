@@ -26,8 +26,18 @@ class _HomePageState extends State<HomePage>
   late TabController tabController;
   int tabIndex = 0;
 
-  void logout() {
-    FirebaseAuth.instance.signOut();
+  final AuthService _authService = AuthService();
+
+  void logout() async{
+    await _authService.signOut();
+  }
+
+  void printUser() async {
+    final user = await _authService.getCurrentUserInfo();
+    print(user?.name);
+    print(user?.role);
+    print(user?.phoneNumber);
+    
   }
 
   @override
@@ -79,7 +89,7 @@ class _HomePageState extends State<HomePage>
 
     return Scaffold(
         appBar: AppBar(
-          actions: [IconButton(onPressed: logout, icon: Icon(Icons.logout))],
+          actions: [IconButton(onPressed: logout, icon: Icon(Icons.logout)), IconButton(onPressed: printUser, icon: Icon(Icons.person))],
         ),
         body: Expanded(
           child: TabBarView(
