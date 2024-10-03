@@ -2,7 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:srh360app/modules/menu/view/menu_view.dart';
 import 'package:srh360app/presentation/auth/auth.dart';
+import 'package:srh360app/routes/app_pages.dart';
 
 import 'config/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,8 +14,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(EasyLocalization(
     supportedLocales: const [
@@ -36,7 +38,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'SRH360',
         theme: lightThemeData(),
-        home: const AuthPage(),
+
+        initialRoute: Routes.LOGINROUTE,
+        getPages: AppPages.routes,
+
+        // const AuthPage(),
       ),
     );
   }

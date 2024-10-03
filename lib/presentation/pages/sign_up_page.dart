@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import 'package:srh360app/gen/colors.gen.dart';
+import 'package:srh360app/presentation/pages/home_page.dart';
 import 'package:srh360app/presentation/pages/sign_in_page.dart';
 import 'package:srh360app/presentation/widgets/common_button.dart';
 import 'package:srh360app/presentation/widgets/common_textfield.dart';
 import 'package:srh360app/presentation/widgets/error_message.dart';
+import 'package:srh360app/services/auth_service.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -21,8 +23,12 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  final AuthService _authService = AuthService();
+
+  
+
   void registerUser() async {
-    print("object");
+    print("--------------------------object--------------------------");
     showDialog(
         context: context,
         builder: (context) => const Center(
@@ -33,14 +39,24 @@ class _SignUpPageState extends State<SignUpPage> {
       
       //try to create a user
       try {
-        debugPrint("firebase");
-        UserCredential? userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(
-                email: emailController.text.trim(), password: passwordController.text.trim());
+        await _authService.signUpWithEmail(
+          emailController.text.trim(),
+          passwordController.text.trim(),
+          nameController.text.trim(),
+          'user', // Manually setting this as user (could change as needed)
+          phoneController.text.trim(),
+        );
 
         // pop loading circle
         
         Navigator.pop(context);
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ),
+        );
       } on FirebaseAuthException catch (e) {
         Navigator.pop(context);
         errorMessage(e.code, context);

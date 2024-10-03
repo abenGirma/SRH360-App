@@ -13,7 +13,8 @@ class ArticlesController extends GetxController {
     super.onInit();
     fetchArticles();
   }
-
+  
+  
   void fetchArticles() async {
     try {
       isLoading.value = true; 
@@ -49,6 +50,7 @@ class ArticlesController extends GetxController {
       isLoading.value = false;
     }
   }
+  
 
   void setCategory(String category) {
     selectedCategory.value = category;

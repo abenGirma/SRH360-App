@@ -1,0 +1,87 @@
+{
+    "allowed_time": "1",
+    "passmark": "5",
+    "questions": [
+      {
+        "question": "What is the normal body temperature for a healthy adult?",
+        "choicea": "36.1°C to 37.2°C",
+        "choiceb": "34.5°C to 35.5°C",
+        "choicec": "38.0°C to 39.0°C",
+        "choiced": "37.5°C to 38.5°C",
+        "answer": "1"
+      },
+      {
+        "question": "Which vitamin is essential for blood clotting?",
+        "choicea": "Vitamin A",
+        "choiceb": "Vitamin C",
+        "choicec": "Vitamin K",
+        "choiced": "Vitamin D",
+        "answer": "3"
+      },
+      {
+        "question": "What is the main function of red blood cells?",
+        "choicea": "Fight infections",
+        "choiceb": "Transport oxygen",
+        "choicec": "Regulate body temperature",
+        "choiced": "Produce antibodies",
+        "answer": "2"
+      },
+      {
+        "question": "Which organ is primarily responsible for detoxifying chemicals in the blood?",
+        "choicea": "Kidney",
+        "choiceb": "Liver",
+        "choicec": "Heart",
+        "choiced": "Lungs",
+        "answer": "2"
+      },
+      {
+        "question": "How many chambers are there in the human heart?",
+        "choicea": "2",
+        "choiceb": "3",
+        "choicec": "4",
+        "choiced": "5",
+        "answer": "3"
+      },
+      {
+        "question": "Which nutrient is most important for muscle growth and repair?",
+        "choicea": "Carbohydrates",
+        "choiceb": "Fats",
+        "choicec": "Proteins",
+        "choiced": "Vitamins",
+        "answer": "3"
+      },
+      {
+        "question": "What is the primary function of the large intestine?",
+        "choicea": "Absorb nutrients",
+        "choiceb": "Absorb water",
+        "choicec": "Produce digestive enzymes",
+        "choiced": "Break down proteins",
+        "answer": "2"
+      },
+      {
+        "question": "Which mineral is essential for strong bones and teeth?",
+        "choicea": "Iron",
+        "choiceb": "Calcium",
+        "choicec": "Magnesium",
+        "choiced": "Potassium",
+        "answer": "2"
+      },
+      {
+        "question": "What is the term for high blood pressure?",
+        "choicea": "Hypotension",
+        "choiceb": "Hypertension",
+        "choicec": "Hyperglycemia",
+        "choiced": "Hypoglycemia",
+        "answer": "2"
+      },
+      {
+        "question": "Which organ is affected by hepatitis?",
+        "choicea": "Kidney",
+        "choiceb": "Lung",
+        "choicec": "Liver",
+        "choiced": "Heart",
+        "answer": "3"
+      }
+    ]
+  }
+  
