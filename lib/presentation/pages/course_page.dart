@@ -60,8 +60,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
                               color: Colors.black,
                             ),
                             child: ClipOval(
-                                child:
-                                    Image.asset('assets/image/happy_face.png')),
+                                child: Image.asset(
+                                    'assets/images/happy_face.png')),
                           ),
                         ],
                       ),
