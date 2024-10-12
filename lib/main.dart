@@ -2,8 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:srh360app/modules/menu/view/menu_view.dart';
-import 'package:srh360app/presentation/auth/auth.dart';
 import 'package:srh360app/routes/app_pages.dart';
 
 import 'config/theme.dart';

@@ -67,6 +67,19 @@ class $AssetsImagesGen {
       ];
 }
 
+class $AssetsImgGen {
+  const $AssetsImgGen();
+
+  /// File path: assets/img/back.png
+  AssetGenImage get back => const AssetGenImage('assets/img/back.png');
+
+  /// File path: assets/img/user.png
+  AssetGenImage get user => const AssetGenImage('assets/img/user.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [back, user];
+}
+
 class $AssetsTranslationsGen {
   const $AssetsTranslationsGen();
 
@@ -84,13 +97,21 @@ class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsImgGen img = $AssetsImgGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -110,7 +131,7 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = false,
+    bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
     FilterQuality filterQuality = FilterQuality.low,

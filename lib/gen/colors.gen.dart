@@ -66,4 +66,31 @@ class ColorName {
       900: Color(0xFFFFA1A7),
     },
   );
+
+  /// MaterialColor:
+  ///   50: #FFF7F7F7
+  ///   100: #FFECEBEB
+  ///   200: #FFDFDEDE
+  ///   300: #FFD2D0D0
+  ///   400: #FFC8C6C6
+  ///   500: #FFBEBCBC
+  ///   600: #FFB8B6B6
+  ///   700: #FFAFADAD
+  ///   800: #FFA7A5A5
+  ///   900: #FF999797
+  static const MaterialColor tertiaryColor = MaterialColor(
+    0xFFBEBCBC,
+    <int, Color>{
+      50: Color(0xFFF7F7F7),
+      100: Color(0xFFECEBEB),
+      200: Color(0xFFDFDEDE),
+      300: Color(0xFFD2D0D0),
+      400: Color(0xFFC8C6C6),
+      500: Color(0xFFBEBCBC),
+      600: Color(0xFFB8B6B6),
+      700: Color(0xFFAFADAD),
+      800: Color(0xFFA7A5A5),
+      900: Color(0xFF999797),
+    },
+  );
 }

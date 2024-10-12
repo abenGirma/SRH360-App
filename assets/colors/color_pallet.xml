@@ -2,4 +2,7 @@
 <resources>
     <color name="primaryColor" type="material">#FF79BC</color>
     <color name="secondaryColor" type="material">#FFC3C8</color>
+    <color name="tertiaryColor" type="material">#BEBCBC</color>
+
+
 </resources>
