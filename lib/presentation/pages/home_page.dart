@@ -5,6 +5,7 @@ import 'package:srh360app/gen/colors.gen.dart';
 import 'package:srh360app/model/course.dart';
 import 'package:srh360app/model/lesson.dart';
 import 'package:srh360app/presentation/pages/course_page.dart';
+import 'package:srh360app/presentation/pages/sign_in_page.dart';
 import 'package:srh360app/presentation/tabs/home_tab.dart';
 import 'package:srh360app/presentation/tabs/menu_tab.dart';
 import 'package:srh360app/presentation/tabs/profile_tab.dart';
@@ -30,6 +31,8 @@ class _HomePageState extends State<HomePage>
 
   void logout() async{
     await _authService.signOut();
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInPage()));
+    
   }
 
   void printUser() async {
