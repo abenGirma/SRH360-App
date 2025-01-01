@@ -5,6 +5,7 @@ import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import 'package:srh360app/gen/assets.gen.dart';
 import 'package:srh360app/gen/colors.gen.dart';
 import 'package:srh360app/presentation/pages/course_page.dart';
+import 'package:srh360app/presentation/pages/home_page.dart';
 import 'package:srh360app/presentation/pages/sign_up_page.dart';
 import 'package:srh360app/presentation/widgets/common_button.dart';
 import 'package:srh360app/presentation/widgets/common_textfield.dart';
@@ -45,6 +46,12 @@ class _SignInPageState extends State<SignInPage> {
         if (context.mounted) {
           Navigator.pop(context);
         }
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ),
+        );
       } on FirebaseAuthException catch (e) {
         Navigator.pop(context);
         errorMessage(e.code, context);
